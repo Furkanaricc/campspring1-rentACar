@@ -1,24 +1,20 @@
 package kodlama.io.rentACar.entitiy.concretes;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Table(name="brands")
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity //Varlık sınıfımız
 public class Brand {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private int id;
-    @Column(name="name")
+    @Id // PrimaryKey
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //Id otomatik ilerlemesini sağlar.
+    @Column(name="id") //Sütun
+    private int id; //Primary Key
+    @Column(name="name") //Sütun
     private String name;
 }
