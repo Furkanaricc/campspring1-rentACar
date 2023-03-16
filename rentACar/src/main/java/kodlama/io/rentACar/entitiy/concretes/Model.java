@@ -1,28 +1,27 @@
 package kodlama.io.rentACar.entitiy.concretes;
-
 import lombok.*;
-import java.util.*;
 import javax.persistence.*;
+import java.util.*;
 
-@Table(name="brands")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity //Varlık sınıfımız
-public class Brand {
-
+@Table(name="models")
+@Entity
+public class Model {
     @Id // PrimaryKey
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Id otomatik ilerlemesini sağlar.
     @Column(name="id") //Sütun
     private int id; //Primary Key
 
-
     @Column(name="name") //Sütun
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name="brand_id")
+    private Brand brand;
 
-    @OneToMany(mappedBy="brand")
-    private List<Model> models;
-
-
+    @OneToMany(mappedBy = "model")
+    private List<Car> cars;
 }
